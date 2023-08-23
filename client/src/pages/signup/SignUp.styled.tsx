@@ -1,124 +1,78 @@
 import tw from 'twin.macro';
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 
-export const SignUpWrapper = tw.div`
-    bg-BASIC_BLACK
-    w-screen
-    h-screen
-    flex
-    flex-row
-    justify-center
-    items-center
+export const AgreePageWrapper = tw.div`
+    w-[744px]
+    h-full
+    mx-auto
+    items-start
+    bg-pink-50
+    overflow-y-scroll
 `;
 
-export const SingupSection = tw.div`
-    px-2
-    py-10
-    text-BASIC_WHITE
-    mr-32
-    ml-32
-    min-w-[430px]
+export const LogoV2Img = tw.img`
+    h-20
+    w-32
+    p-3
+`;
+
+//체크박스 
+export const CheckBox = tw.input``;
+
+export const AgreeBoxItem = tw.div`
     flex
     flex-col
-    items-center
 `;
 
-export const ButtonContainer = tw.div`
-  flex
-  justify-between
-  space-x-16
-  [width:100%]
-  [max-width:24rem]
-  mt-10
-  mb-10
-  mx-auto
+export const TitleWrapper = tw.div`
+    flex
+    flex-row
 `;
 
-export const SignBtn = styled.button`
-  ${tw`
-  w-16
-  h-16
-  md:w-32
-  md:h-32
-  border-2
-  border-slate-200
-  transition-all
-  duration-200
-  ease-in-out
-  text-black
-  `}
+export const BigTitleText = tw.div`
+    text-xl
+    font-semibold
+    ml-2
+`;
 
-  &:hover {
-    background-color: #8ec5fc;
-    background-image: linear-gradient(46deg, #8ec5fc 0%, #e0c3fc 100%);
-    color: black;
-    transform: scale(1.1);
-    border: 1px solid white;
-  }
+export const PointTitle = styled.span<{point?: string}>`
+    color: ${(props) => (props.point === 'point') ? '#8580E1' : '#555555'};
+    ${tw`
+        text-sm
+        font-bold
+    `}
+`;
 
-  &:focus {
-    background-color: #8ec5fc;
-    background-image: linear-gradient(46deg, #8ec5fc 0%, #e0c3fc 100%);
-    color: black;
-    font-weight: bolder;
-    border: 2px solid white;
-  }
+export const MiddleTitleText = tw.div`
+    ml-2
+`;
+
+export const ContentText = tw.div`
+    text-sm
+    text-BASIC_GRAY
 `;
 
 export const ContentBox = tw.div`
-  w-[450px]
-  text-white
-  h-auto
-  border-2
-  border-gray-200
-  rounded-3xl
-  flex 
-  flex-col
-  items-center
-  justify-center
-  p-10
-  font-normal
-  space-y-4
-  mx-auto
-`;
-
-export const HorizonLine = tw.div`
-  mr-10
-  border-BASIC_WHITE
-  border-l-2
-  h-[500px]
-`;
-
-export const InputWrapper = tw.form`
-  mb-10
-`;
-
-export const InputForm = styled.input`
-  ${tw`
-    w-full
-    h-14
-    px-4
-    py-2
-    rounded-lg
-    focus:border-green-500
-    bg-transparent
-    my-4
     border
-    border-white
-  `}
-`;
-
-export const SecreatTag = styled.span`
-  ${tw`
-    mt-4
-    text-gray-300
+    border-BASIC_BORDER
+    text-BASIC_GRAY
+    rounded-md
+    px-2
     text-sm
-    underline
-    underline-offset-4
-    cursor-pointer
-  `}
-
-  &:hover {
-    color: #8580e1;
-  }
+    overflow-y-scroll
+    h-40
 `;
+
+export const SubmitButton = styled.input`
+    ${tw`
+    w-full
+    h-12
+    rounded-lg
+    bg-BASIC_PURPLE
+    `}
+
+    &:hover{
+        background-color: #9999;
+    }
+`;
+
