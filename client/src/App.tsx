@@ -17,6 +17,7 @@ import EditCommunity from './pages/community-edit/EditCommunity';
 import LandingPage from './pages/landingpage/LandingPage';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import Neon from './pages/gisun/Neon';
+import SignupAgree from './pages/signup/SignupAgree';
 
 const App = () => {
   //희재님 363137911116-hddsgl4il78hg3mfmssf0vanicga1vu4.apps.googleusercontent.com
@@ -46,6 +47,7 @@ const App = () => {
             <Route path="/portfolio/edit" element={<PortfolioEdit />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
+            <Route path="/signup/agree" element={<SignupAgree />} />
             <Route path="/neon" element={<Neon />} />
           </Routes>
         </BrowserRouter>

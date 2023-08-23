@@ -23,7 +23,7 @@ export default function Login() {
       <LinkTextWrapper>
         <LoginLinkText>비밀번호 찾기</LoginLinkText>
         <LoginLinkText>아이디 찾기</LoginLinkText>
-        <Link to="/signup"><LoginLinkText>회원가입</LoginLinkText></Link>
+        <Link to="/signup/agree"><LoginLinkText>회원가입</LoginLinkText></Link>
       </LinkTextWrapper>
       <TextWrapper>
         <SmallInfoText>Design by 박효정 조혜진</SmallInfoText>
