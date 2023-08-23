@@ -6,7 +6,7 @@ import Main from './pages/main/Main';
 import CommunityDetail from './pages/community-detail/CommunityDetail';
 import CommunityMain from './pages/community-main/CommunityMain';
 import Login from './pages/login/Login';
-import SignUp from './pages/signup/SignUp';
+import Signup from './pages/signup/signup';
 import MyPage from './pages/mypage/Mypage';
 import MainLayout from './commons/styles/layout/MainLayout';
 import PortfolioDetail from './pages/portfolio-detail/PortfolioDetail';
@@ -16,8 +16,8 @@ import AddCommunity from './pages/community-add/AddCommunity';
 import EditCommunity from './pages/community-edit/EditCommunity';
 import LandingPage from './pages/landingpage/LandingPage';
 import { GoogleOAuthProvider } from '@react-oauth/google';
-import SelectRole from './components/login/SelectRole';
 import Neon from './pages/gisun/Neon';
+import SignupAgree from './pages/signup/SignupAgree';
 
 const App = () => {
   //희재님 363137911116-hddsgl4il78hg3mfmssf0vanicga1vu4.apps.googleusercontent.com
@@ -46,8 +46,8 @@ const App = () => {
             />
             <Route path="/portfolio/edit" element={<PortfolioEdit />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<SignUp />} />
-            <Route path="/signup/role" element={<SelectRole />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/signup/agree" element={<SignupAgree />} />
             <Route path="/neon" element={<Neon />} />
           </Routes>
         </BrowserRouter>
