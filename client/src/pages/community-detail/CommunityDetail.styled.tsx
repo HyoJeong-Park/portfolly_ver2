@@ -22,6 +22,7 @@ export const TitleContainer = styled.div`
   `}
 
   h1 {
+    ${tw`pl-5`}
     font-size: 1.5rem;
   }
 `;
@@ -29,6 +30,7 @@ export const TitleContainer = styled.div`
 export const MainContainer = tw.div`
   flex
   gap-10
+  my-8
 `;
 
 export const CmDContainer = tw.div`
@@ -36,8 +38,6 @@ export const CmDContainer = tw.div`
 `;
 
 export const CommentContainer = tw.div`
-  // w-full
-  // h-[700px]
 `;
 
 export const CommentWrite = tw.div`

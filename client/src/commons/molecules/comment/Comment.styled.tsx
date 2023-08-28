@@ -16,7 +16,7 @@ h-full
 export const CommentInput = styled.textarea`
   ${tw`w-4/5 h-full px-2 py-1 resize-none rounded-md border-[0.5px]`}
   &:focus {outline: none;}
-  border-color: gray;
+  border-color: #ddd;
   font-size: 13px;
   color:black;
 `
