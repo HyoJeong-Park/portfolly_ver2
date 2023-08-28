@@ -28,8 +28,6 @@ export const TitleContainer = styled.div`
 `;
 
 export const MainContainer = tw.div`
-  flex
-  gap-10
   my-8
 `;
 
