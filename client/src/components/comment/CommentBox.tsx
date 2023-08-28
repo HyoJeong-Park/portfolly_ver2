@@ -82,7 +82,7 @@ export default function CommentBox({ comments = [], handleRender }: any) {
       <Card>
         <JbWrapper>
           <FlexColumnContainer gap={0}>
-            <img src={noComment} alt="no comments" />
+            {/* <img src={noComment} alt="no comments" /> */}
           </FlexColumnContainer>
           <CommentWriteBox saveComment={saveComment} handleComment={handleComment} isInput={currentComment} />
         </JbWrapper>

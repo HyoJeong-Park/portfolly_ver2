@@ -2,8 +2,16 @@ import tw from 'twin.macro';
 import { styled } from 'styled-components'
 
 export const PageWrapper = styled.div`
-  ${tw`flex flex-col gap-8 min-h-screen bg-center bg-no-repeat bg-cover mt-10`}
+  ${tw`flex flex-col min-h-screen bg-center bg-no-repeat bg-cover mt-10`}
   padding: 0 100px;
+
+  h2 {
+    ${tw`text-xl pt-10`}
+  }
+
+  hr {
+    ${tw`pb-5`}
+  }
 `;
 
 export const TitleContainer = styled.div`
@@ -24,21 +32,17 @@ export const MainContainer = tw.div`
 `;
 
 export const CmDContainer = tw.div`
-  w-full
+  // w-full
 `;
 
 export const CommentContainer = tw.div`
-  w-full
-  h-[700px]
+  // w-full
+  // h-[700px]
 `;
 
 export const CommentWrite = tw.div`
   
 `;
 
-export const JbWrapper = tw.div`
-  flex
-  flex-col
-  justify-between
-  h-full
+export const JbWrapper = styled.div`
 `;

@@ -88,6 +88,8 @@ export default function CommunityDetail({ handleClick }: any) {
           />
         </CmDContainer>
       </MainContainer>
+      <h2>Comments</h2>
+      <hr />
       <CommentContainer>
         <CommentBox comments={memberData.comments} handleRender={handleRender} />
       </CommentContainer>
