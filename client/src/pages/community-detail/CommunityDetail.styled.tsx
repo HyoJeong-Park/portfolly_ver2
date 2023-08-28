@@ -1,9 +1,22 @@
 import tw from 'twin.macro';
 import { styled } from 'styled-components'
 
-export const PageWrapper = styled.div(( ) => [
-  tw`flex flex-col gap-8 w-full h-full min-h-screen bg-center bg-no-repeat bg-cover pt-10 px-8`,
-]);
+export const PageWrapper = styled.div`
+  ${tw`flex flex-col gap-8 min-h-screen bg-center bg-no-repeat bg-cover mt-10`}
+  padding: 0 100px;
+`;
+
+export const TitleContainer = styled.div`
+  ${tw`
+    flex
+    items-center
+    justify-start
+  `}
+
+  h1 {
+    font-size: 1.5rem;
+  }
+`;
 
 export const MainContainer = tw.div`
   flex
@@ -11,11 +24,11 @@ export const MainContainer = tw.div`
 `;
 
 export const CmDContainer = tw.div`
-  w-2/3
+  w-full
 `;
 
 export const CommentContainer = tw.div`
-  w-1/3
+  w-full
   h-[700px]
 `;
 
