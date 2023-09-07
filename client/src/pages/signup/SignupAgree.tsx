@@ -4,7 +4,7 @@ import {
     AgreeBoxItem, SignupWrapper, BigTitleText, 
     CheckBox, ContentBox, ContentText, LogoV2Img, 
     MiddleTitleText, PointText, PointTitle, SubmitButton, SubmitWrapper, TitleWrapper 
-} from "./Signup.styled";
+} from "./SignUp.styled";
 import LogoV2 from '@/assets/logoVer2.png';
 
 export default function SignupAgree () {

@@ -1,6 +1,5 @@
 import tw from 'twin.macro';
 import styled from 'styled-components';
-import { LiaUserSolid, LiaLockSolid } from "react-icons/lia"; 
 
 export const LoginWrapper = styled.div`
   font-family: 'Do Hyeon', sans-serif;
@@ -20,19 +19,6 @@ export const LogoV2Img = tw.img`
   w-52
   p-3
   mt-10
-`;
-
-export const InputIcon = tw.span`
-  px-3
-`;
-
-export const LoginInput = tw.input`
-  w-full
-  h-full
-  text-BASIC_GRAY
-  outline-none
-  mr-3
-  font-light
 `;
 
 
@@ -74,21 +60,6 @@ const BottomLoginInput = styled.div`
   `}
   border-radius: 0px 0px 10px 10px;
 `;
-
-
-export const TopRoundInput = () => (
-  <TopLoginInput>
-    <InputIcon><LiaUserSolid/></InputIcon>
-    <LoginInput type="email" placeholder="아이디"/>
-  </TopLoginInput>
-)
-
-export const BottomRoundInput = () => (
-  <BottomLoginInput>
-    <InputIcon><LiaLockSolid/></InputIcon>
-    <LoginInput type="text" placeholder="비밀번호"/>
-  </BottomLoginInput>
-)
 
 
 
