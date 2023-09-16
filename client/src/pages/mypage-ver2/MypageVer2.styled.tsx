@@ -1,6 +1,10 @@
 import { styled } from 'styled-components';
 import tw from 'twin.macro';
 
+export const MypageWrapper = styled.div`
+  ${tw` flex flex-row`}
+`;
+
 export const ProfileWrapper = styled.div`
   ${tw` relative `}
   width: 450px;
@@ -85,4 +89,36 @@ export const CategoryList = styled.ul`
 export const LogoutButton = styled.button`
   ${tw` bg-transparent border-0 absolute bottom-0 left-1/2 `}
   transform: translate(-50%, -50%);
+`;
+
+export const ProfileManageWrapper = styled.div`
+  ${tw` p-10`}
+  width: 990px;
+  height: 100vh;
+
+  h1 {
+    font-size: 2rem;
+  }
+`;
+
+export const IntroductionContents = styled.div`
+  ${tw` rounded-lg p-8 border-BASIC_BORDER border my-10 shadow-md`}
+  width: 800px;
+
+  h3 {
+    ${tw` mb-3 `}
+    color: #999;
+  }
+
+  li {
+    ${tw`font-bold`}
+    line-height: 40px;
+    color: #999;
+  }
+
+  .skillList {
+    width: 100%;
+    height: 200px;
+    background-color: rgb(217,217,217,0.2);
+  }
 `;

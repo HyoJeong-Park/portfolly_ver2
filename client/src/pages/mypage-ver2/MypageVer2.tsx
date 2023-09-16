@@ -1,4 +1,4 @@
-import { EventHandler, useState } from 'react';
+import { useState } from 'react';
 
 import logoVer2 from '@/assets/logoVer2.png';
 import userImage from '@/assets/userImg.jpg';
@@ -6,11 +6,14 @@ import { BiBell } from 'react-icons/bi';
 import { BsFillPencilFill } from 'react-icons/bs';
 
 import {
+  MypageWrapper,
   ProfileWrapper,
   ProfileUser,
   RequestAlarm,
   CategoryList,
   LogoutButton,
+  ProfileManageWrapper,
+  IntroductionContents,
 } from './MypageVer2.styled';
 
 export default function MypageVer2 () {
@@ -21,7 +24,7 @@ export default function MypageVer2 () {
     setClickedCategory(category);
   };
   return (
-    <>
+    <MypageWrapper>
       <ProfileWrapper>
         <img src={logoVer2} alt='logoImage' />
         <ProfileUser>
@@ -42,6 +45,23 @@ export default function MypageVer2 () {
         </CategoryList>
         <LogoutButton>로그아웃</LogoutButton>
       </ProfileWrapper>
-    </>
+      {clickedCategory === 'profile' ? 
+        <ProfileManageWrapper>
+          <h1>Profile</h1>
+          <IntroductionContents>
+            <h3>기본정보</h3>
+            <ul>
+              <li>Email : hyojeong@yodeong.com </li>
+              <li>Job : Frontend Developer </li>
+              <li>Etc : Cat Zipsa </li>
+            </ul>
+          </IntroductionContents>
+          <IntroductionContents>
+            <h3>Skill</h3>
+            <div className='skillList'></div>
+          </IntroductionContents>
+        </ProfileManageWrapper>
+      : ''}
+    </MypageWrapper>
   )
 };
