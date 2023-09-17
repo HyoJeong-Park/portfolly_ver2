@@ -1,6 +1,7 @@
 import tw from 'twin.macro';
 import { styled } from 'styled-components';
 import { LiaMapPinSolid, LiaHeartSolid } from 'react-icons/lia'
+import { Link } from 'react-router-dom';
 
 export const CommunityWrapper = tw.div`
   flex
@@ -199,18 +200,33 @@ interface RankingItem {
   num: number;
   title: string;
   likes: number;
+  communityId: number;
 }
 
 
-export const RankingCommuItem = ({num, title, likes}: RankingItem) => {
+export const TextTruncate = (props: { text: string; maxLength: number }) => {
+  const { text, maxLength } = props;
+
+  if (text.length <= maxLength) {
+    return <p>{text}</p>;
+  } else {
+    const truncatedText = text.slice(0, maxLength) + '...';
+    return <p>{truncatedText}</p>;
+  }
+};
+
+export const RankingCommuItem = ({num, title, likes, communityId}: RankingItem) => {
   const style = {color: "#8580E1", fontSize: "1.5em"}
+
   return(
+    <Link to={`/boards/${communityId}`}>
     <div className="px-3 py-3 flex flex-row text-xs font-light text-BASIC_TEXT cursor-pointer
     hover:text-BASIC_BLACK">
       <div className="pr-1 font-semibold">{num}</div>
-      <div className="truncate ... px-1 ml-1">{title}</div>
+      <div className="truncate ... px-1 ml-1 flex-1"><TextTruncate text={title} maxLength={20}/></div>
       <LiaHeartSolid style={style}/>
       <div className="pl-1 text-BASIC_PURPLE">{likes}</div>
     </div>
+    </Link>
   )
 }
