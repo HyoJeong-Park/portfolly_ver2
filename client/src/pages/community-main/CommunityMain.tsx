@@ -1,16 +1,21 @@
 import { useState, useEffect } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { 
+  useNavigate,
+  // useSearchParams
+} from 'react-router-dom';
+import { RootState } from '@/store';
+import axios from 'axios';
+import { useSelector } from 'react-redux';
 
-import Search from '@/components/search/Search';
+// import Search from '@/components/search/Search';
 import CommunityItem from '@/components/communityItem/CommunityItem';
-// import { call } from '@/utils/apiService';
 
 import { CommuProps } from '@/types';
 
 import {
   CommunityItemWrapper,
   CommunityWrapper,
-  SearchContainer,
+  // SearchContainer,
   CommunityMainWrapper,
   TitleSectionCommu,
   DivisionTitle,
@@ -24,15 +29,17 @@ import {
   RankingCommuItem,
   WritingButton,
 } from './CommunityMain.styled';
-import axios from 'axios';
-import { useSelector } from 'react-redux';
 import { NodataImage } from '../main/Main.styled';
 import datano from '@/assets/datano.png';
+
+import AlertModal from '@/components/modal/AlertModal';
 
 export default function CommunityMain() {
   const [data, setData] = useState<CommuProps[]>([]);
   const [filteredData, setFilteredData] = useState<CommuProps[]>([]);
   const [division, setDivision] = useState('COOPERATION');
+  const [openAlert, setOpenAlert] = useState(false);
+  const navigate = useNavigate();
   //인기순 필터 적용 및 베스트 게시굴에서 사용.
   const sortedData = [...data].sort((acc:CommuProps, cur:CommuProps) => cur.view - acc.view);
   // const [searchParams] = useSearchParams();
@@ -40,8 +47,7 @@ export default function CommunityMain() {
   const page = 1;
   const size = 30;
 
-  // const state: any = useSelector((state) => state);
-  // const currentLoginState = state.loginSlice.isLogin;
+  const currentLoginState = useSelector((state: RootState) => state.loginSlice.isLogin);
 
   useEffect(() => {
     const showWholeCommu = async () => {
@@ -84,6 +90,17 @@ export default function CommunityMain() {
     }
   }
 
+  const handleAlert = () => {
+    setOpenAlert(!openAlert);
+  }
+
+  const handleNavigate = (loginState: boolean) => {
+    if(loginState === true){
+      navigate('/boards/edit')
+    }
+    setOpenAlert(true);
+  }
+
   
 
   // 검색 - 07.11 효정
@@ -106,7 +123,14 @@ export default function CommunityMain() {
         />
       </SearchContainer> */}
       <TitleSectionCommu/>
-      <WritingButton>새글 등록하기</WritingButton>
+      <WritingButton onClick={() => handleNavigate(currentLoginState)}>
+        새글 등록하기
+      </WritingButton>
+      {
+        openAlert && (
+          <AlertModal type={"etc"} onCancel={handleAlert} title={"잠깐!"} content={"로그인한 사용자만 사용할 수 있습니다!"} clicked={"닫기"}/>
+        )
+      }
       
         <DivisionWrapper>
           <DivisionBox>
@@ -140,14 +164,11 @@ export default function CommunityMain() {
 
       <SideBoxWrapper type="ranking">
         <RankingTitle title={"베스트 게시글"} date={"오후 6시"} />
-        {/* {Array.from({length:5} ,(_, index)=> {
-          return <RankingCommuItem key={index} num={index+1} title={"프론트 구합니다. 삼성전자 앱 제작"} likes={122}/>
-        })} */}
         {filteredData.length > 0 ? (
           <>
           {sortedData.slice(0,5).map((communityItem: CommuProps, index: number) => {
             const rank = index+1;
-            return <RankingCommuItem num={rank} title={communityItem.title} likes={communityItem.view}/>
+            return <RankingCommuItem num={rank} title={communityItem.title} likes={communityItem.view} communityId={communityItem.id}/>
           })}
           </>
         ): null}
