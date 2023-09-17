@@ -1,6 +1,5 @@
 import tw from 'twin.macro';
 import styled from 'styled-components';
-import { LiaHeartSolid } from "react-icons/lia";
 
 export const CommunityItemWrapper= styled.div`
   ${tw`
@@ -25,6 +24,8 @@ export const ItemUserWrapper = tw.div`
   flex-col
   items-center
   px-5
+  w-24
+  text-center
 `;
 
 export const ItemTextWrapper = tw.div`
@@ -79,7 +80,6 @@ export const ItemUserName = tw.div`
 `;
 
 export const ItemLikeButton = tw.button`
-  bg-pink-200
   flex
   flex-row
   flex-1

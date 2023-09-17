@@ -26,29 +26,63 @@ import {
 } from './CommunityMain.styled';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
+import { NodataImage } from '../main/Main.styled';
+import datano from '@/assets/datano.png';
 
 export default function CommunityMain() {
-  // const [data, setData] = useState<CommuProps[]>([]);
+  const [data, setData] = useState<CommuProps[]>([]);
+  const [filteredData, setFilteredData] = useState<CommuProps[]>([]);
+  const [division, setDivision] = useState('COOPERATION');
+  //인기순 필터 적용 및 베스트 게시굴에서 사용.
+  const sortedData = [...data].sort((acc:CommuProps, cur:CommuProps) => cur.view - acc.view);
   // const [searchParams] = useSearchParams();
   // const division = searchParams.get('division');
-  // const page = 1;
-  // const size = 30;
+  const page = 1;
+  const size = 30;
 
   // const state: any = useSelector((state) => state);
   // const currentLoginState = state.loginSlice.isLogin;
 
-  // useEffect(() => {
-  //   const showWholeCommu = async () => {
-  //     await axios
-  //       .get(`https://api.portfolly.site/boards/pages?division=${division}&page=${page}&size=${size}`)
-  //       .then((res) => {
-  //         console.log(res.data.data);
-  //         setData(res.data.data);
-  //       });
-  //   };
+  useEffect(() => {
+    const showWholeCommu = async () => {
+      await axios
+        .get(`https://api.portfolly.site/boards/pages?division=${division}&page=${page}&size=${size}`)
+        .then((res) => {
+          //console.log(res.data.data);
+          setData(res.data.data);
+        });
+    };
 
-  //   showWholeCommu();
-  // }, [division]);
+    showWholeCommu();
+  }, [division]);
+
+
+  useEffect(() => {
+    setFilteredData(data);
+  }, [data]);
+
+  useEffect(() => {
+
+  }, [filteredData, division])
+
+  const FilterData = (filterType:string) => {
+    if(filterType === 'recent'){
+      setFilteredData(data);
+    }
+    if(filterType === 'popular'){
+
+      setFilteredData(sortedData);   
+    }
+  }
+
+  const handleDivision = (divisionType:string) => {
+    if(divisionType === 'recrutiment'){
+      setDivision('RECRUITMENT');
+    }
+    if( divisionType === 'cooperation'){
+      setDivision('COOPERATION');
+    }
+  }
 
   
 
@@ -76,38 +110,26 @@ export default function CommunityMain() {
       
         <DivisionWrapper>
           <DivisionBox>
-            <DivisionTitle>Recruitment</DivisionTitle>
-            <DivisionTitle>Cooperation</DivisionTitle>
+            <DivisionTitle onClick={() => handleDivision('recrutiment')}>Recruitment</DivisionTitle>
+            <DivisionTitle onClick={() => handleDivision('cooperation')}>Cooperation</DivisionTitle>
           </DivisionBox>
 
           <DivisionBox>
-            <DivisionFilter>최신순</DivisionFilter>
-            <DivisionFilter>인기순</DivisionFilter>
+            <DivisionFilter onClick={() => FilterData("recent")}>최신순</DivisionFilter>
+            <DivisionFilter onClick={() => FilterData("popular")}>인기순</DivisionFilter>
           </DivisionBox>
         </DivisionWrapper>
 
         <CommunityItemWrapper>
-          {Array.from({length: 5},(_, index) => {
-            return <CommunityItem key={index}/>
-          }) }
-
-
-          {/* {currentLoginState ? (
-            <Link to="/boards/edit">
-                <WritingButton>새글 등록하기</WritingButton>
-            </Link>
-          ) : ''}
-          {searchs.length > 0 ? (
-            <ListsWrapper>
-              {searchs.map((communityItem: any) => {
-                return <CommunityItem key={communityItem.id} communityItem={communityItem} />;
-              })}
-            </ListsWrapper>
-          ) : (
-            <NodataImage src={datano} alt="no data" />
-          )} */}
-
-
+        {filteredData.length > 0 ? 
+        (
+          filteredData.map((communityItem: CommuProps) => {
+            return <CommunityItem key={communityItem.id} communityItem={communityItem}/>
+          })
+        ) : (
+          <NodataImage src={datano} alt="noData"/>
+        )
+        }
         </CommunityItemWrapper>
     </CommunityMainWrapper>
 
@@ -118,9 +140,17 @@ export default function CommunityMain() {
 
       <SideBoxWrapper type="ranking">
         <RankingTitle title={"베스트 게시글"} date={"오후 6시"} />
-        {Array.from({length:5} ,(_, index)=> {
+        {/* {Array.from({length:5} ,(_, index)=> {
           return <RankingCommuItem key={index} num={index+1} title={"프론트 구합니다. 삼성전자 앱 제작"} likes={122}/>
-        })}
+        })} */}
+        {filteredData.length > 0 ? (
+          <>
+          {sortedData.slice(0,5).map((communityItem: CommuProps, index: number) => {
+            const rank = index+1;
+            return <RankingCommuItem num={rank} title={communityItem.title} likes={communityItem.view}/>
+          })}
+          </>
+        ): null}
       </SideBoxWrapper>
     </RightSideWrapper>
 
