@@ -15,7 +15,6 @@ import AddCommunity from './pages/community-add/AddCommunity';
 import EditCommunity from './pages/community-edit/EditCommunity';
 import LandingPage from './pages/landingpage/LandingPage';
 import { GoogleOAuthProvider } from '@react-oauth/google';
-import Neon from './pages/gisun/Neon';
 import SignupAgree from './pages/signup/SignupAgree';
 
 const App = () => {
@@ -35,14 +34,13 @@ const App = () => {
               <Route path="/boards/:id" element={<CommunityDetail />} />
               <Route path="/boards/edit/:id" element={<EditCommunity />} />
               <Route path="/boards/edit" element={<AddCommunity />} />
+              <Route path="/portfolios/:portfolio_id" element={<PortfolioDetail />} />
+            <Route path="/portfolio/edit" element={<PortfolioEdit />} />
             </Route>
             <Route path="/members/:id" element={<MyPage />} />
-            <Route path="/portfolios/:portfolio_id" element={<PortfolioDetail />} />
-            <Route path="/portfolio/edit" element={<PortfolioEdit />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/signup/agree" element={<SignupAgree />} />
-            <Route path="/neon" element={<Neon />} />
           </Routes>
         </BrowserRouter>
       </Provider>
