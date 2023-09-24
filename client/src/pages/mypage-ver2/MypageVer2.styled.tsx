@@ -12,7 +12,7 @@ export const ProfileWrapper = styled.div`
   padding: 30px;
   border-right: 2px solid #ddd;
 
-  > img {
+  .logoIamge {
     width: 130px;
   }
 `;
@@ -91,12 +91,6 @@ export const LogoutButton = styled.button`
   transform: translate(-50%, -50%);
 `;
 
-export const ProfileManageWrapper = styled.div`
-  ${tw` p-10 `}
-  width: 900px;
-  height: 100vh;
-`;
-
 export const ManageTitle = styled.h1`
   ${tw` border-b border-BASIC_LINE pb-3`}
   font-size: 2rem;
@@ -134,7 +128,7 @@ export const MypageItemWrapper = styled.div`
   ${tw` flex flex-row justify-between flex-wrap`}
 `;
 
-export const MypageItem = styled.div`
+export const MypagePortfolioItem = styled.div`
   ${tw` rounded-md p-5 my-5 `}
   border: 1px solid #888;
   width: 250px;
@@ -164,5 +158,30 @@ export const MypageItemViews = styled.div`
 
   > span {
     ${tw` px-2 text-POINT_COLOR text-xs `}
+  }
+`;
+
+export const MypageCommunityItem = styled(MypagePortfolioItem)`
+  .mypageCommunityItemContentWrapper {
+    ${tw` flex flex-col justify-between `}
+    height: 85%;
+  }
+`;
+
+export const MypageCommunityItemContent = styled.div`
+  ${tw` flex flex-col `}
+  > h3 {
+    ${tw` text-BASIC_TEXT font-bold text-xl mb-3`}
+  }
+
+  > p {
+    ${tw` text-POINT_COLOR text-xs `}
+  }
+`;
+
+export const MypageCommunityItemTag = styled.div`
+  ${tw` bg-BASIC_PURPLE rounded-md text-BASIC_WHITE inline px-2 py-1 font-light mr-2 `}
+  > span {
+    ${tw` text-sm `}
   }
 `;
