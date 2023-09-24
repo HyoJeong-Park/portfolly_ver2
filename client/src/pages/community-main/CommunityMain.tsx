@@ -7,7 +7,7 @@ import { RootState } from '@/store';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 
-// import Search from '@/components/search/Search';
+import Search from '@/components/search/Search';
 import CommunityItem from '@/components/communityItem/CommunityItem';
 
 import { CommuProps } from '@/types';
@@ -15,7 +15,7 @@ import { CommuProps } from '@/types';
 import {
   CommunityItemWrapper,
   CommunityWrapper,
-  // SearchContainer,
+  SearchContainer,
   CommunityMainWrapper,
   TitleSectionCommu,
   DivisionTitle,
@@ -33,6 +33,7 @@ import { NodataImage } from '../main/Main.styled';
 import datano from '@/assets/datano.png';
 
 import AlertModal from '@/components/modal/AlertModal';
+import Loading from '@/components/loading/Loading';
 
 export default function CommunityMain() {
   const [data, setData] = useState<CommuProps[]>([]);
@@ -42,6 +43,7 @@ export default function CommunityMain() {
   const navigate = useNavigate();
   //인기순 필터 적용 및 베스트 게시굴에서 사용.
   const sortedData = [...data].sort((acc:CommuProps, cur:CommuProps) => cur.view - acc.view);
+  const [isLoading, setIsLoading] = useState(true);
   // const [searchParams] = useSearchParams();
   // const division = searchParams.get('division');
   const page = 1;
@@ -56,6 +58,7 @@ export default function CommunityMain() {
         .then((res) => {
           //console.log(res.data.data);
           setData(res.data.data);
+          setIsLoading(false);
         });
     };
 
@@ -104,7 +107,7 @@ export default function CommunityMain() {
   
 
   // 검색 - 07.11 효정
-  // const [currentSearch, setCurrentSearch] = useState('');
+  const [currentSearch, setCurrentSearch] = useState('');
   // const [searchs, setSearchs] = useState([] as any);
 
   // useEffect(() => {
@@ -112,16 +115,11 @@ export default function CommunityMain() {
   // }, [data]);
 
   return (
+    <>{isLoading ? (
+      <Loading/> 
+    ):(
     <CommunityWrapper>
     <CommunityMainWrapper>
-      {/* <SearchContainer>
-        <Search
-          setSearchValue={setCurrentSearch}
-          currentSearch={currentSearch}
-          data={data}
-          setSearchs={setSearchs}
-        />
-      </SearchContainer> */}
       <TitleSectionCommu/>
       <WritingButton onClick={() => handleNavigate(currentLoginState)}>
         새글 등록하기
@@ -131,20 +129,28 @@ export default function CommunityMain() {
           <AlertModal type={"etc"} onCancel={handleAlert} title={"잠깐!"} content={"로그인한 사용자만 사용할 수 있습니다!"} clicked={"닫기"}/>
         )
       }
+      <SearchContainer>
+        <Search
+          setSearchValue={setCurrentSearch}
+          currentSearch={currentSearch}
+          data={data}
+          setSearchs={setFilteredData}
+        />
+      </SearchContainer>
       
-        <DivisionWrapper>
-          <DivisionBox>
-            <DivisionTitle onClick={() => handleDivision('recrutiment')}>Recruitment</DivisionTitle>
-            <DivisionTitle onClick={() => handleDivision('cooperation')}>Cooperation</DivisionTitle>
-          </DivisionBox>
+      <DivisionWrapper>
+        <DivisionBox>
+          <DivisionTitle onClick={() => handleDivision('recrutiment')}>Recruitment</DivisionTitle>
+          <DivisionTitle onClick={() => handleDivision('cooperation')}>Cooperation</DivisionTitle>
+        </DivisionBox>
 
-          <DivisionBox>
-            <DivisionFilter onClick={() => FilterData("recent")}>최신순</DivisionFilter>
-            <DivisionFilter onClick={() => FilterData("popular")}>인기순</DivisionFilter>
-          </DivisionBox>
-        </DivisionWrapper>
+        <DivisionBox>
+          <DivisionFilter onClick={() => FilterData("recent")}>최신순</DivisionFilter>
+          <DivisionFilter onClick={() => FilterData("popular")}>인기순</DivisionFilter>
+        </DivisionBox>
+      </DivisionWrapper>
 
-        <CommunityItemWrapper>
+      <CommunityItemWrapper>
         {filteredData.length > 0 ? 
         (
           filteredData.map((communityItem: CommuProps) => {
@@ -154,7 +160,7 @@ export default function CommunityMain() {
           <NodataImage src={datano} alt="noData"/>
         )
         }
-        </CommunityItemWrapper>
+      </CommunityItemWrapper>
     </CommunityMainWrapper>
 
     <RightSideWrapper>
@@ -174,7 +180,8 @@ export default function CommunityMain() {
         ): null}
       </SideBoxWrapper>
     </RightSideWrapper>
-
     </CommunityWrapper>
+    )}
+    </>
   );
 }
