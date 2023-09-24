@@ -10,7 +10,7 @@ export const DropdownContainer = styled.div`
   
   &.expanded {
     opacity: 1; /* 확장되었을 때 투명도 설정 */
-    top: 8vh;
+    top: 5vh;
     max-height: 90vh; /* 뷰포트 높이(전체 화면 높이)로 설정 */
   }
 `;

@@ -21,10 +21,11 @@ export default function Dropwdown (props: {isOpen: boolean, loginState: boolean}
         <DropdownContainer className={isOpen ? 'expanded' : ''}>
             <DropdownUL>
                 <ModalLink><div className="mr-1"><VscBell size="10"/></div>Alarm</ModalLink>
-                <ModalLink><Link to={`/members/${memberId}`}>My Page</Link></ModalLink>
+                <ModalLink><Link to={`/boards`}>Community</Link></ModalLink>
                 <ModalLink><Link to="/portfolio/edit">New Portfolio</Link></ModalLink>
-                {loginState ? (
-                <ModalLink onClick={handleLoginState}>Log Out</ModalLink>
+                {loginState ? (<>
+                <ModalLink><Link to={`/members/${memberId}`}>My Page</Link></ModalLink>
+                <ModalLink onClick={handleLoginState}>Log Out</ModalLink></>
                 ): <ModalLink><Link to="/login">Log In</Link></ModalLink>}
 
             </DropdownUL>
