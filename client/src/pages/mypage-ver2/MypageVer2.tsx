@@ -4,6 +4,7 @@ import logoVer2 from '@/assets/logoVer2.png';
 import userImage from '@/assets/userImg.jpg';
 import { BiBell } from 'react-icons/bi';
 import { BsFillPencilFill } from 'react-icons/bs';
+import { AiOutlineEye } from 'react-icons/ai';
 
 import {
   MypageWrapper,
@@ -14,6 +15,12 @@ import {
   LogoutButton,
   ProfileManageWrapper,
   IntroductionContents,
+  ManageWrapper,
+  MypageItem,
+  MypageItemImage,
+  MypageItemViews,
+  ManageTitle,
+  MypageItemWrapper,
 } from './MypageVer2.styled';
 
 export default function MypageVer2 () {
@@ -45,9 +52,9 @@ export default function MypageVer2 () {
         </CategoryList>
         <LogoutButton>로그아웃</LogoutButton>
       </ProfileWrapper>
-      {clickedCategory === 'profile' ? 
-        <ProfileManageWrapper>
-          <h1>Profile</h1>
+      {(clickedCategory === 'profile') ? 
+        <ManageWrapper>
+          <ManageTitle>Profile</ManageTitle>
           <IntroductionContents>
             <h3>기본정보</h3>
             <ul>
@@ -60,8 +67,52 @@ export default function MypageVer2 () {
             <h3>Skill</h3>
             <div className='skillList'></div>
           </IntroductionContents>
-        </ProfileManageWrapper>
-      : ''}
+        </ManageWrapper>
+      : (clickedCategory === 'portfolio') ? 
+          <ManageWrapper>
+            <ManageTitle>My Portfolio</ManageTitle>
+            <MypageItemWrapper>
+              {/* 아이템 컴포넌트로 빼기 */}
+              <MypageItem>
+                <MypageItemImage src={userImage} alt='임시이미지' />
+                <h3>Web UI Design</h3>
+                <p>Web UI Design width React x TypeScript Project HOihHOO ..</p>
+                <MypageItemViews>
+                  <AiOutlineEye className='viewIcon' size={18} />
+                  <span>300</span>
+                </MypageItemViews>
+              </MypageItem>
+              <MypageItem>
+                <MypageItemImage src={userImage} alt='임시이미지' />
+                <h3>Web UI Design</h3>
+                <p>Web UI Design width React x TypeScript Project HOihHOO ..</p>
+                <MypageItemViews>
+                  <AiOutlineEye className='viewIcon' size={18} />
+                  <span>300</span>
+                </MypageItemViews>
+              </MypageItem>
+              <MypageItem>
+                <MypageItemImage src={userImage} alt='임시이미지' />
+                <h3>Web UI Design</h3>
+                <p>Web UI Design width React x TypeScript Project HOihHOO ..</p>
+                <MypageItemViews>
+                  <AiOutlineEye className='viewIcon' size={18} />
+                  <span>300</span>
+                </MypageItemViews>
+              </MypageItem>
+              <MypageItem>
+                <MypageItemImage src={userImage} alt='임시이미지' />
+                <h3>Web UI Design</h3>
+                <p>Web UI Design width React x TypeScript Project HOihHOO ..</p>
+                <MypageItemViews>
+                  <AiOutlineEye className='viewIcon' size={18} />
+                  <span>300</span>
+                </MypageItemViews>
+              </MypageItem>
+            </MypageItemWrapper>
+          </ManageWrapper>
+        : ''
+      }
     </MypageWrapper>
   )
 };
