@@ -18,12 +18,12 @@ export const CommunityMainWrapper = styled.div`
 `;
 
 export const SearchContainer = tw.div`
+  mb-10
   w-1/2
   flex
   justify-center
   items-center
   mx-auto
-  mt-10
 `;
 
 export const CommunityItemWrapper = tw.div`
@@ -33,16 +33,7 @@ export const CommunityItemWrapper = tw.div`
 `;
 
 export const WritingButton = styled.button`
-  ${tw`
-  bg-BASIC_LINE
-  text-BASIC_PURPLE
-  font-semibold
-  text-sm
-  px-5
-  py-1
-  mb-10
-  w-40
-  rounded-lg`}
+  ${tw`w-40 px-5 py-1 mb-10 text-sm font-semibold rounded-lg bg-BASIC_LINE text-BASIC_PURPLE`}
 
   &:hover{
     background-color: #8580E1;
@@ -54,11 +45,7 @@ export const WritingButton = styled.button`
 
 const BigTitleCommu = styled.div`
   font-family: 'Inconsolata', sans-serif;
-  ${tw`
-    text-4xl
-    mb-3
-    mt-10
-  `}
+  ${tw`mt-10 mb-3 text-4xl `}
                                                 
 `;
 export const TitleSectionCommu = () => {
@@ -67,7 +54,7 @@ export const TitleSectionCommu = () => {
       <BigTitleCommu>
         Community
       </BigTitleCommu>
-      <div className="text-BASIC_GRAY mb-5">
+      <div className="mb-5 text-BASIC_GRAY">
         동료를 찾거나 의견을 나누는 공간입니다 함께 여행 중인 당신의 생각을 들려주세요.
       </div>
     </div>
@@ -90,10 +77,7 @@ export const DivisionBox = tw.div`
 
 export const DivisionTitle = styled.button`
   font-family: 'Inconsolata', sans-serif;
-  ${tw`
-    text-xl
-    px-3
-  `}
+  ${tw`px-3 text-xl `}
 
   &:hover, &:active, &:focus{
     font-weight: bolder;
@@ -104,12 +88,7 @@ export const DivisionTitle = styled.button`
 
 export const DivisionFilter = styled.button`
   font-family: 'Inconsolata', sans-serif;
-  ${tw`
-    text-sm
-    text-BASIC_GRAY
-    font-normal
-    px-2
-  `}
+  ${tw`px-2 text-sm font-normal text-BASIC_GRAY`}
 
   &:hover, &:active, &:focus {
     color: #8580e1;
@@ -125,14 +104,7 @@ export const RightSideWrapper = tw.div`
 `;
 
 export const SideBoxWrapper = styled.div<{type?: string}>`
-  ${tw`border
-  border-BASIC_BORDER
-  rounded-lg
-  pb-3
-  mt-10
-  w-60
-  h-fit
-  relative`}
+  ${tw`relative pb-3 mt-10 border rounded-lg border-BASIC_BORDER w-60 h-fit`}
 
   padding-top: ${(props) => (props.type === "ranking") ? "0px" : "2rem"};
 `;
@@ -150,15 +122,7 @@ export const SideBoxPin = tw.div`
 `;
 
 const NoticeBox = styled.div<{exception?: string}>`
-  ${tw`
-    px-5
-    py-2
-    font-light
-    text-xs
-    mb-2
-    cursor-pointer
-    mx-2
-  `}
+  ${tw`px-5 py-2 mx-2 mb-2 text-xs font-light cursor-pointer `}
 
   background-color: ${(props) => (props.exception === 'exception')? '#EEEEEE' : '#FFD9E0'};
   &:hover{
@@ -188,9 +152,8 @@ interface Rankingprops {
 
 export const RankingTitle = ( {title, date}: Rankingprops ) => {
   return(
-    <div className="flex flex-row justify-between items-end bg-BASIC_LINE text-base 
-    font-light overflow-hidden py-3 px-2 border border-b-BASIC_BORDER ">
-      <div className="font-semibold text-sm">{title}</div>
+    <div className="flex flex-row items-end justify-between px-2 py-3 overflow-hidden text-base font-light border bg-BASIC_LINE border-b-BASIC_BORDER ">
+      <div className="text-sm font-semibold">{title}</div>
       <div className="text-xs text-BASIC_TEXT">{date} 기준</div>
     </div>
   )
@@ -220,8 +183,7 @@ export const RankingCommuItem = ({num, title, likes, communityId}: RankingItem) 
 
   return(
     <Link to={`/boards/${communityId}`}>
-    <div className="px-3 py-3 flex flex-row text-xs font-light text-BASIC_TEXT cursor-pointer
-    hover:text-BASIC_BLACK">
+    <div className="flex flex-row px-3 py-3 text-xs font-light cursor-pointer text-BASIC_TEXT hover:text-BASIC_BLACK">
       <div className="pr-1 font-semibold">{num}</div>
       <div className="truncate ... px-1 ml-1 flex-1"><TextTruncate text={title} maxLength={20}/></div>
       <LiaHeartSolid style={style}/>
