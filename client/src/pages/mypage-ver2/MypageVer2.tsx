@@ -4,6 +4,7 @@ import logoVer2 from '@/assets/logoVer2.png';
 import userImage from '@/assets/userImg.jpg';
 import { BiBell } from 'react-icons/bi';
 import { BsFillPencilFill } from 'react-icons/bs';
+import { AiOutlineEye } from 'react-icons/ai';
 
 import {
   MypageWrapper,
@@ -12,9 +13,18 @@ import {
   RequestAlarm,
   CategoryList,
   LogoutButton,
-  ProfileManageWrapper,
   IntroductionContents,
+  ManageWrapper,
+  MypagePortfolioItem,
+  MypageItemImage,
+  MypageItemViews,
+  ManageTitle,
+  MypageItemWrapper,
+  MypageCommunityItem,
+  MypageCommunityItemContent,
+  MypageCommunityItemTag,
 } from './MypageVer2.styled';
+import { Link } from 'react-router-dom';
 
 export default function MypageVer2 () {
   const [clickedCategory, setClickedCategory] = useState('profile');
@@ -26,7 +36,9 @@ export default function MypageVer2 () {
   return (
     <MypageWrapper>
       <ProfileWrapper>
-        <img src={logoVer2} alt='logoImage' />
+        <Link to='/'>
+          <img className='logoIamge' src={logoVer2} alt='logoImage' />
+        </Link>
         <ProfileUser>
           <div className='editButton'><BsFillPencilFill size={12} /></div>
           <img src={userImage} alt='userimage' />
@@ -45,9 +57,9 @@ export default function MypageVer2 () {
         </CategoryList>
         <LogoutButton>로그아웃</LogoutButton>
       </ProfileWrapper>
-      {clickedCategory === 'profile' ? 
-        <ProfileManageWrapper>
-          <h1>Profile</h1>
+      {(clickedCategory === 'profile') ? 
+        <ManageWrapper>
+          <ManageTitle>Profile</ManageTitle>
           <IntroductionContents>
             <h3>기본정보</h3>
             <ul>
@@ -60,8 +72,112 @@ export default function MypageVer2 () {
             <h3>Skill</h3>
             <div className='skillList'></div>
           </IntroductionContents>
-        </ProfileManageWrapper>
-      : ''}
+        </ManageWrapper>
+      : (clickedCategory === 'portfolio') ? 
+          <ManageWrapper>
+            <ManageTitle>My Portfolio</ManageTitle>
+            <MypageItemWrapper>
+              {/* 아이템 컴포넌트로 빼기 */}
+              <MypagePortfolioItem>
+                <MypageItemImage src={userImage} alt='임시이미지' />
+                <h3>Web UI Design</h3>
+                <p>Web UI Design width React x TypeScript Project HOihHOO ..</p>
+                <MypageItemViews>
+                  <AiOutlineEye className='viewIcon' size={18} />
+                  <span>300</span>
+                </MypageItemViews>
+              </MypagePortfolioItem>
+              <MypagePortfolioItem>
+                <MypageItemImage src={userImage} alt='임시이미지' />
+                <h3>Web UI Design</h3>
+                <p>Web UI Design width React x TypeScript Project HOihHOO ..</p>
+                <MypageItemViews>
+                  <AiOutlineEye className='viewIcon' size={18} />
+                  <span>300</span>
+                </MypageItemViews>
+              </MypagePortfolioItem>
+              <MypagePortfolioItem>
+                <MypageItemImage src={userImage} alt='임시이미지' />
+                <h3>Web UI Design</h3>
+                <p>Web UI Design width React x TypeScript Project HOihHOO ..</p>
+                <MypageItemViews>
+                  <AiOutlineEye className='viewIcon' size={18} />
+                  <span>300</span>
+                </MypageItemViews>
+              </MypagePortfolioItem>
+              <MypagePortfolioItem>
+                <MypageItemImage src={userImage} alt='임시이미지' />
+                <h3>Web UI Design</h3>
+                <p>Web UI Design width React x TypeScript Project HOihHOO ..</p>
+                <MypageItemViews>
+                  <AiOutlineEye className='viewIcon' size={18} />
+                  <span>300</span>
+                </MypageItemViews>
+              </MypagePortfolioItem>
+            </MypageItemWrapper>
+          </ManageWrapper>
+        : (clickedCategory === 'bookmark') ?
+          <ManageWrapper>
+            <ManageTitle>My Bookmark</ManageTitle>
+            <MypageItemWrapper>
+              {/* 아이템 컴포넌트로 빼기 */}
+              <MypagePortfolioItem>
+                <MypageItemImage src={userImage} alt='임시이미지' />
+                <h3>Web UI Design</h3>
+                <p>Web UI Design width React x TypeScript Project HOihHOO ..</p>
+                <MypageItemViews>
+                  <AiOutlineEye className='viewIcon' size={18} />
+                  <span>300</span>
+                </MypageItemViews>
+              </MypagePortfolioItem>
+              <MypagePortfolioItem>
+                <MypageItemImage src={userImage} alt='임시이미지' />
+                <h3>Web UI Design</h3>
+                <p>Web UI Design width React x TypeScript Project HOihHOO ..</p>
+                <MypageItemViews>
+                  <AiOutlineEye className='viewIcon' size={18} />
+                  <span>300</span>
+                </MypageItemViews>
+              </MypagePortfolioItem>
+              <MypagePortfolioItem>
+                <MypageItemImage src={userImage} alt='임시이미지' />
+                <h3>Web UI Design</h3>
+                <p>Web UI Design width React x TypeScript Project HOihHOO ..</p>
+                <MypageItemViews>
+                  <AiOutlineEye className='viewIcon' size={18} />
+                  <span>300</span>
+                </MypageItemViews>
+              </MypagePortfolioItem>
+            </MypageItemWrapper>
+          </ManageWrapper>
+        : (clickedCategory === 'article') ?
+          <ManageWrapper>
+            <ManageTitle>Community</ManageTitle>
+            <MypageItemWrapper>
+              <MypageCommunityItem>
+                <div className='mypageCommunityItemContentWrapper'>
+                  <MypageCommunityItemContent>
+                    <h3>Web UI Design</h3>
+                    <p>Web UI Design width React x TypeScript Project HOihHOO ..</p>
+                  </MypageCommunityItemContent>
+                  <div className='mypageCommunityItemTagWrapper'>
+                    <MypageCommunityItemTag>
+                      <span>#React</span>
+                    </MypageCommunityItemTag>
+                    <MypageCommunityItemTag>
+                      <span>#Typescript</span>
+                    </MypageCommunityItemTag>
+                  </div>
+                </div>
+                <MypageItemViews>
+                  <AiOutlineEye className='viewIcon' size={18} />
+                  <span>300</span>
+                </MypageItemViews>
+              </MypageCommunityItem>       
+            </MypageItemWrapper>
+          </ManageWrapper>
+        : ''
+      }
     </MypageWrapper>
   )
 };
