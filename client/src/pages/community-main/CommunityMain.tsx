@@ -44,6 +44,15 @@ export default function CommunityMain() {
   //인기순 필터 적용 및 베스트 게시굴에서 사용.
   const sortedData = [...data].sort((acc:CommuProps, cur:CommuProps) => cur.view - acc.view);
   const [isLoading, setIsLoading] = useState(true);
+  const [currentSearch, setCurrentSearch] = useState('');
+  const [timeUpdate, setTime] = useState(() => {
+    const currentTime = new Date(new Date().getTime());
+    const hour = currentTime.getHours();
+    const divisionPeriod = hour > 12 ? '오후' : '오전';
+    const changedHour = hour > 12 ? hour - 12 : hour;
+    const updatedTimeSet = `${divisionPeriod} ${changedHour}시`;
+    return updatedTimeSet;
+  });
   // const [searchParams] = useSearchParams();
   // const division = searchParams.get('division');
   const page = 1;
@@ -65,31 +74,70 @@ export default function CommunityMain() {
     showWholeCommu();
   }, [division]);
 
+  //업데이트 시간 세팅
+  const handleTime = () => {
+    const currentTime = new Date(new Date().getTime());
+    const hour = currentTime.getHours();
+    const divisionPeriod = hour > 12 ? '오후' : '오전';
+    const changedHour = hour > 12 ? hour - 12 : hour;
+    const updatedTimeSet = `${divisionPeriod} ${changedHour}시`;
+    setTime( updatedTimeSet );
+  };
+
+  useEffect(() => {
+    const handleInterval = setInterval(() => {
+      handleTime();
+      console.log('인터벌 함수 실행', timeUpdate);
+    }, 21600000);
+
+    return () => {
+      clearInterval(handleInterval)
+    };
+
+  }, [timeUpdate]);
 
   useEffect(() => {
     setFilteredData(data);
-  }, [data]);
+  }, [data])
 
-  useEffect(() => {
+  const [ isClicked, setIsClicked ]  = useState({
+    division: false,
+    filter: false,
+  });
 
-  }, [filteredData, division])
+  const handleDivisionClick = () => {
+    setIsClicked((prevState) => ({
+      ...prevState,
+      division: !prevState.division,
+    }));
+  };
+
+  const handleFilterClick = () => {
+    setIsClicked((prevState) => ({
+      ...prevState,
+      filter: !prevState.filter,
+    }));
+  };
 
   const FilterData = (filterType:string) => {
     if(filterType === 'recent'){
       setFilteredData(data);
+      handleFilterClick();
     }
     if(filterType === 'popular'){
-
-      setFilteredData(sortedData);   
+      setFilteredData(sortedData);
+      handleFilterClick();
     }
   }
 
   const handleDivision = (divisionType:string) => {
     if(divisionType === 'recrutiment'){
       setDivision('RECRUITMENT');
+      handleDivisionClick();
     }
     if( divisionType === 'cooperation'){
       setDivision('COOPERATION');
+      handleDivisionClick();
     }
   }
 
@@ -104,15 +152,7 @@ export default function CommunityMain() {
     setOpenAlert(true);
   }
 
-  
 
-  // 검색 - 07.11 효정
-  const [currentSearch, setCurrentSearch] = useState('');
-  // const [searchs, setSearchs] = useState([] as any);
-
-  // useEffect(() => {
-  //   setSearchs(data);
-  // }, [data]);
 
   return (
     <>{isLoading ? (
@@ -140,13 +180,13 @@ export default function CommunityMain() {
       
       <DivisionWrapper>
         <DivisionBox>
-          <DivisionTitle onClick={() => handleDivision('recrutiment')}>Recruitment</DivisionTitle>
-          <DivisionTitle onClick={() => handleDivision('cooperation')}>Cooperation</DivisionTitle>
+          <DivisionTitle onClick={() => handleDivision('recrutiment')} className={isClicked.division ? 'clicked' : ''}>Recruitment</DivisionTitle>
+          <DivisionTitle onClick={() => handleDivision('cooperation')} className={isClicked.division ? '' : 'clicked'}>Cooperation</DivisionTitle>
         </DivisionBox>
 
         <DivisionBox>
-          <DivisionFilter onClick={() => FilterData("recent")}>최신순</DivisionFilter>
-          <DivisionFilter onClick={() => FilterData("popular")}>인기순</DivisionFilter>
+          <DivisionFilter onClick={() => FilterData("recent")} className={isClicked.filter ? 'clicked' : ''}>최신순</DivisionFilter>
+          <DivisionFilter onClick={() => FilterData("popular")} className={isClicked.filter ? '' : 'clicked'}>인기순</DivisionFilter>
         </DivisionBox>
       </DivisionWrapper>
 
@@ -169,7 +209,7 @@ export default function CommunityMain() {
       </SideBoxWrapper>
 
       <SideBoxWrapper type="ranking">
-        <RankingTitle title={"베스트 게시글"} date={"오후 6시"} />
+        <RankingTitle title={"베스트 게시글"} date={timeUpdate} />
         {filteredData.length > 0 ? (
           <>
           {sortedData.slice(0,5).map((communityItem: CommuProps, index: number) => {
