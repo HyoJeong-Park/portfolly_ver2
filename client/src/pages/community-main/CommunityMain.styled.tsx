@@ -84,6 +84,12 @@ export const DivisionTitle = styled.button`
     color: #8580E1;
     border-bottom:3px solid #8580E1;
   }
+
+  &.clicked {
+    font-weight: bolder;
+    color: #8580E1;
+    border-bottom:3px solid #8580E1;
+  }
 `;
 
 export const DivisionFilter = styled.button`
@@ -92,7 +98,10 @@ export const DivisionFilter = styled.button`
 
   &:hover, &:active, &:focus {
     color: #8580e1;
+  }
 
+  &.clicked {
+    color: #8580e1;
   }
 `;
 
