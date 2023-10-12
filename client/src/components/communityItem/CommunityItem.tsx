@@ -3,10 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { CommuProps } from '@/types';
 
 import { CommunityItemWrapper, ItemContent, ItemInfoDate, ItemInfoWrapper, ItemLikeButton, ItemLikeCount, ItemTextWrapper, ItemTitle, ItemUserName, ItemUserWrapper, TagSection } from './CommunityItem.styled';
-import { LiaUserCircle, LiaHeartSolid } from "react-icons/lia";
-import Views from '../views/Views';
-import MemberProfile from '@/commons/molecules/profile/MemberProfile';
-import circleNoImg from '@/assets/circleNoImg.png';
+import { LiaHeartSolid } from "react-icons/lia";
 import Image from '@/commons/atoms/image/Image';
 import { useState } from 'react';
 import useUserImageHandler from '@/hooks/useUserImageHandler';
@@ -32,7 +29,6 @@ export default function CommunityItem( props: { communityItem: CommuProps }) {
       }}
     >
       <ItemUserWrapper>
-        {/* <LiaUserCircle size={50}/> */}
         <Image src={pic} url={`/`} shape="circle" size={65} />
         <ItemUserName>{eachData.memberInfo.name}</ItemUserName>
       </ItemUserWrapper>

@@ -1,4 +1,3 @@
-/* 2023-07-04 주소, 모양, 사이즈를 입력 받는 이미지 아토믹 컴포넌트 - 김다함*/
 import { ImageContainer, FeatherImage } from '@/commons/atoms/image/Image.styled';
 
 interface ImageProps {

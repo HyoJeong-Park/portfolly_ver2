@@ -5,7 +5,8 @@ import { Link } from 'react-router-dom';
 
 export const CommunityWrapper = tw.div`
   flex
-  flex-row
+  flex-col
+  md:flex-row
   mx-auto
   w-4/5
 `;
@@ -13,13 +14,15 @@ export const CommunityWrapper = tw.div`
 
 export const CommunityMainWrapper = styled.div`
   ${tw`
-    w-full flex flex-col max-w-[690px] min-w-[550px]
+    w-full flex flex-col md:max-w-[690px] md:min-w-[550px]
   `}
 `;
 
 export const SearchContainer = tw.div`
-  mb-10
-  w-1/2
+  md:mb-10
+  mb-2
+  md:w-1/2
+  w-full
   flex
   justify-center
   items-center
@@ -30,10 +33,15 @@ export const CommunityItemWrapper = tw.div`
   flex
   flex-col
   px-5
+  max-h-[500px] overflow-y-scroll
+  mb-5
+  md:m-0
+  border-b-2
+  md:border-0
 `;
 
 export const WritingButton = styled.button`
-  ${tw`w-40 px-5 py-1 mb-10 text-sm font-semibold rounded-lg bg-BASIC_LINE text-BASIC_PURPLE`}
+  ${tw`w-32 px-5 py-1 mb-5 text-sm font-semibold rounded-lg md:w-40 bg-BASIC_LINE text-BASIC_PURPLE md:mb-10`}
 
   &:hover{
     background-color: #8580E1;
@@ -45,7 +53,7 @@ export const WritingButton = styled.button`
 
 const BigTitleCommu = styled.div`
   font-family: 'Inconsolata', sans-serif;
-  ${tw`mt-10 mb-3 text-4xl `}
+  ${tw`mt-3 mb-3 text-xl font-semibold md:font-normal md:text-4xl md:mt-10 `}
                                                 
 `;
 export const TitleSectionCommu = () => {
@@ -54,7 +62,7 @@ export const TitleSectionCommu = () => {
       <BigTitleCommu>
         Community
       </BigTitleCommu>
-      <div className="mb-5 text-BASIC_GRAY">
+      <div className="mb-3 text-xs md:mb-5 text-BASIC_GRAY md:text-base">
         동료를 찾거나 의견을 나누는 공간입니다 함께 여행 중인 당신의 생각을 들려주세요.
       </div>
     </div>
@@ -63,21 +71,22 @@ export const TitleSectionCommu = () => {
 
 export const DivisionWrapper = tw.div`
   flex
-  flex-row
-  justify-between
+  md:flex-row
+  flex-col
+  md:justify-between
   pb-3
   border-b-2
   mr-3
 `;
 
 export const DivisionBox = tw.div`
-  divide-x
+  md:divide-x
   divide-slate-500
 `;
 
 export const DivisionTitle = styled.button`
   font-family: 'Inconsolata', sans-serif;
-  ${tw`px-3 text-xl `}
+  ${tw`pr-3 text-sm md:px-3 md:text-xl`}
 
   &:hover, &:active, &:focus{
     font-weight: bolder;
@@ -94,7 +103,7 @@ export const DivisionTitle = styled.button`
 
 export const DivisionFilter = styled.button`
   font-family: 'Inconsolata', sans-serif;
-  ${tw`px-2 text-sm font-normal text-BASIC_GRAY`}
+  ${tw`pr-2 text-xs font-normal md:px-2 md:text-sm text-BASIC_GRAY`}
 
   &:hover, &:active, &:focus {
     color: #8580e1;
@@ -107,9 +116,11 @@ export const DivisionFilter = styled.button`
 
 //오른쪽 공지사항과 랭킹 
 export const RightSideWrapper = tw.div`
-  p-2
-  flex
-  flex-col
+  hidden
+  md:p-2
+  md:flex
+  md:w-full
+  md:flex-col
 `;
 
 export const SideBoxWrapper = styled.div<{type?: string}>`
@@ -124,14 +135,14 @@ export const SideBoxPin = tw.div`
   p-2
   flex
   rounded-full
-  bg-BASIC_PURPLE
+bg-BASIC_PURPLE
   absolute
   top-[-25px]
   right-[100px]
 `;
 
 const NoticeBox = styled.div<{exception?: string}>`
-  ${tw`px-5 py-2 mx-2 mb-2 text-xs font-light cursor-pointer `}
+  ${tw`px-5 py-2 mx-2 mb-2 text-xs font-light cursor-pointer`}
 
   background-color: ${(props) => (props.exception === 'exception')? '#EEEEEE' : '#FFD9E0'};
   &:hover{
