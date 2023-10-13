@@ -119,13 +119,14 @@ export const IntroductionContents = styled.div`
 `;
 
 export const ManageWrapper = styled.div`
-  ${tw` p-10 `}
+  ${tw` p-10 overflow-scroll h-screen `}
   width: 65%;
   
 `;
 
 export const MypageItemWrapper = styled.div`
-  ${tw` flex flex-row justify-between flex-wrap`}
+  ${tw` flex flex-row flex-wrap `}
+  gap: 0 40px;
 `;
 
 export const MypagePortfolioItem = styled.div`
@@ -134,12 +135,15 @@ export const MypagePortfolioItem = styled.div`
   width: 250px;
   height: 310px;
 
-  > h3 {
-    ${tw` text-BASIC_TEXT font-bold text-base mb-1`}
-  }
-
-  > p {
-    ${tw` text-POINT_COLOR text-xs `}
+  .mypagePortfolioItemContent {
+    height: 85%;
+    > h3 {
+      ${tw` text-BASIC_TEXT font-bold text-base mb-1`}
+    }
+  
+    > p {
+      ${tw` text-POINT_COLOR text-xs `}
+    }
   }
 `;
 

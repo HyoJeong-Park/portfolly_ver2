@@ -79,36 +79,44 @@ export default function MypageVer2 () {
             <MypageItemWrapper>
               {/* 아이템 컴포넌트로 빼기 */}
               <MypagePortfolioItem>
-                <MypageItemImage src={userImage} alt='임시이미지' />
-                <h3>Web UI Design</h3>
-                <p>Web UI Design width React x TypeScript Project HOihHOO ..</p>
+                <div className='mypagePortfolioItemContent'>
+                  <MypageItemImage src={userImage} alt='임시이미지' />
+                  <h3>Web UI Design</h3>
+                  <p>Web UI Design width React x TypeScript Project HOihHOO ..</p>
+                </div>
                 <MypageItemViews>
                   <AiOutlineEye className='viewIcon' size={18} />
                   <span>300</span>
                 </MypageItemViews>
               </MypagePortfolioItem>
               <MypagePortfolioItem>
-                <MypageItemImage src={userImage} alt='임시이미지' />
-                <h3>Web UI Design</h3>
-                <p>Web UI Design width React x TypeScript Project HOihHOO ..</p>
+                <div className='mypagePortfolioItemContent'>
+                  <MypageItemImage src={userImage} alt='임시이미지' />
+                  <h3>Web UI Design</h3>
+                  <p>Web UI Design width React x TypeScript Project HOihHOO ..</p>
+                </div>
                 <MypageItemViews>
                   <AiOutlineEye className='viewIcon' size={18} />
                   <span>300</span>
                 </MypageItemViews>
               </MypagePortfolioItem>
               <MypagePortfolioItem>
-                <MypageItemImage src={userImage} alt='임시이미지' />
-                <h3>Web UI Design</h3>
-                <p>Web UI Design width React x TypeScript Project HOihHOO ..</p>
+                <div className='mypagePortfolioItemContent'>
+                  <MypageItemImage src={userImage} alt='임시이미지' />
+                  <h3>Web UI Design</h3>
+                  <p>Web UI Design width React x TypeScript Project HOihHOO ..</p>
+                </div>
                 <MypageItemViews>
                   <AiOutlineEye className='viewIcon' size={18} />
                   <span>300</span>
                 </MypageItemViews>
               </MypagePortfolioItem>
               <MypagePortfolioItem>
-                <MypageItemImage src={userImage} alt='임시이미지' />
-                <h3>Web UI Design</h3>
-                <p>Web UI Design width React x TypeScript Project HOihHOO ..</p>
+                <div className='mypagePortfolioItemContent'>
+                  <MypageItemImage src={userImage} alt='임시이미지' />
+                  <h3>Web UI Design</h3>
+                  <p>Web UI Design width React x TypeScript Project HOihHOO ..</p>
+                </div>
                 <MypageItemViews>
                   <AiOutlineEye className='viewIcon' size={18} />
                   <span>300</span>
@@ -122,27 +130,22 @@ export default function MypageVer2 () {
             <MypageItemWrapper>
               {/* 아이템 컴포넌트로 빼기 */}
               <MypagePortfolioItem>
-                <MypageItemImage src={userImage} alt='임시이미지' />
-                <h3>Web UI Design</h3>
-                <p>Web UI Design width React x TypeScript Project HOihHOO ..</p>
+                <div className='mypagePortfolioItemContent'>
+                  <MypageItemImage src={userImage} alt='임시이미지' />
+                  <h3>Web UI Design</h3>
+                  <p>Web UI Design width React x TypeScript Project HOihHOO ..</p>
+                </div>
                 <MypageItemViews>
                   <AiOutlineEye className='viewIcon' size={18} />
                   <span>300</span>
                 </MypageItemViews>
               </MypagePortfolioItem>
               <MypagePortfolioItem>
-                <MypageItemImage src={userImage} alt='임시이미지' />
-                <h3>Web UI Design</h3>
-                <p>Web UI Design width React x TypeScript Project HOihHOO ..</p>
-                <MypageItemViews>
-                  <AiOutlineEye className='viewIcon' size={18} />
-                  <span>300</span>
-                </MypageItemViews>
-              </MypagePortfolioItem>
-              <MypagePortfolioItem>
-                <MypageItemImage src={userImage} alt='임시이미지' />
-                <h3>Web UI Design</h3>
-                <p>Web UI Design width React x TypeScript Project HOihHOO ..</p>
+                <div className='mypagePortfolioItemContent'>
+                  <MypageItemImage src={userImage} alt='임시이미지' />
+                  <h3>Web UI Design</h3>
+                  <p>Web UI Design width React x TypeScript Project HOihHOO ..</p>
+                </div>
                 <MypageItemViews>
                   <AiOutlineEye className='viewIcon' size={18} />
                   <span>300</span>
