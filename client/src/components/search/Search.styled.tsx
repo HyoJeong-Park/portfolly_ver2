@@ -11,7 +11,7 @@ export const SearchIcon = styled(BsSearchHeart)`
 `;
 
 export const SearchBox = styled.input`
-  ${tw`w-full h-10 pl-12 bg-transparent border rounded-md text-BASIC_TEXT border-neutral-400 !outline-none`}
+  ${tw`w-full md:h-10 h-8 pl-12 bg-transparent border rounded-md text-BASIC_TEXT border-neutral-400 !outline-none`}
 
   &:focus {
     border: 1px solid #8580e1 !important;

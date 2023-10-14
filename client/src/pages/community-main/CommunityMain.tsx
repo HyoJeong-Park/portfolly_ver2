@@ -65,7 +65,7 @@ export default function CommunityMain() {
       await axios
         .get(`https://api.portfolly.site/boards/pages?division=${division}&page=${page}&size=${size}`)
         .then((res) => {
-          //console.log(res.data.data);
+          console.log(res.data.data);
           setData(res.data.data);
           setIsLoading(false);
         });
@@ -214,7 +214,7 @@ export default function CommunityMain() {
           <>
           {sortedData.slice(0,5).map((communityItem: CommuProps, index: number) => {
             const rank = index+1;
-            return <RankingCommuItem num={rank} title={communityItem.title} likes={communityItem.view} communityId={communityItem.id}/>
+            return <RankingCommuItem key={index} num={rank} title={communityItem.title} likes={communityItem.view} communityId={communityItem.id}/>
           })}
           </>
         ): null}
